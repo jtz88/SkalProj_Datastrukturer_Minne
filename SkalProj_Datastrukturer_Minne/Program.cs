@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SkalProj_Datastrukturer_Minne
 {
     class Program
     {
-        //1. lol
+        //1. 
         //2. Value type är exempelvis bool, int och double, value types innehåller datat i sitt egna minnesutrymme. Reference type är exempelvis strings,
         //arrays och klasser, reference types innehåller inget data utan en "adress" till ett minnesutymme där datat existerar.
         //3. Den första metoden returnerar 3 då x variabelns värde tilldelas till y men x tilldelas inte ett nytt värde. Den andra metoden returnerar 4 då
@@ -77,12 +79,48 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
-            //List<string> theList = new List<string>();
+            List<string> theList = new List<string>();
             //string input = Console.ReadLine();
             //char nav = input[0];
-            //string value = input.substring(1);
+            //string value = input.Substring(1);
 
-            //switch(nav){...}
+            while (true)
+            {
+                Console.WriteLine("Please add or remove a user by typing their firstname with a + or - operator or press 0 to exit");
+                string input = Console.ReadLine();
+                char nav = input[0];
+                string value = input.Substring(1);
+
+                switch (nav)
+                {
+                    case '+':
+                        theList.Add(value);
+                        Console.WriteLine("Count is: " + theList.Count);
+                        Console.WriteLine("Capacity Is: " + theList.Capacity);
+                        foreach (var item in theList)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        //var capacity = theList.Capacity();
+                        break;
+                    case '-':
+                        theList.RemoveAll(x => x.Contains(value));
+                        Console.WriteLine($"User {value} was deleted.\nCount is: " + theList.Count + "\nCapacity Is: " + theList.Capacity);
+                        foreach (var item in theList)
+                        {
+                            Console.WriteLine(item);
+                        }
+
+                        break;
+                    case '0':
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Please use only + or - operator");
+                        break;
+                }
+            }
+            //switch (nav) {...}
         }
 
         /// <summary>
