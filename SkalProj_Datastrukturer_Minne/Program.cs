@@ -4,13 +4,18 @@ namespace SkalProj_Datastrukturer_Minne
 {
     class Program
     {
+        //1. lol
+        //2. Value type är exempelvis bool, int och double, value types innehåller datat i sitt egna minnesutrymme. Reference type är exempelvis strings,
+        //arrays och klasser, reference types innehåller inget data utan en "adress" till ett minnesutymme där datat existerar.
+        //3. Den första metoden returnerar 3 då x variabelns värde tilldelas till y men x tilldelas inte ett nytt värde. Den andra metoden returnerar 4 då
+        //y tilldelas x's referens till minnesutrymmet och sedan sätts värdet till 4. Både x och y pekar mot värdet 4.
         /// <summary>
         /// The main method, vill handle the menues for the program
         /// </summary>
         /// <param name="args"></param>
         static void Main()
         {
-            //HEj!
+            
             while (true)
             {
                 Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
