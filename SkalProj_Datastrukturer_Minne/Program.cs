@@ -11,6 +11,14 @@ namespace SkalProj_Datastrukturer_Minne
         //arrays och klasser, reference types innehåller inget data utan en "adress" till ett minnesutymme där datat existerar.
         //3. Den första metoden returnerar 3 då x variabelns värde tilldelas till y men x tilldelas inte ett nytt värde. Den andra metoden returnerar 4 då
         //y tilldelas x's referens till minnesutrymmet och sedan sätts värdet till 4. Både x och y pekar mot värdet 4.
+        //Övning 1
+        //2. När listans kapacitets överskrids
+        //3. Kapaciteten fördubblas
+        //4. För datorer/minne jobbar i tvåpotens då allting är bits, 1 eller 0. En array som utökas blir alltid dubbelt så stor som tidigare.
+        //5. Nej, minnesallokationens utrymme är reserverad så länge listan existerar.
+        //6. När man vet exakt hur stor arrayen kommer behöva vara.
+        //Övning 3
+        //1. För att den som står först i kön kommer att hanteras sist.
         /// <summary>
         /// The main method, vill handle the menues for the program
         /// </summary>
@@ -80,40 +88,27 @@ namespace SkalProj_Datastrukturer_Minne
             */
 
             List<string> theList = new List<string>();
+
             //string input = Console.ReadLine();
             //char nav = input[0];
             //string value = input.Substring(1);
 
             while (true)
             {
-                Console.WriteLine("Please add or remove a user by typing their firstname with a + or - operator or press 0 to exit");
+                Console.WriteLine("Please add or remove a user by typing their firstname with a + or - operator or press 0 to exit to main menu");
                 string input = Console.ReadLine();
+                if (input == "0")  break;
+
                 char nav = input[0];
                 string value = input.Substring(1);
 
                 switch (nav)
                 {
                     case '+':
-                        theList.Add(value);
-                        Console.WriteLine("Count is: " + theList.Count);
-                        Console.WriteLine("Capacity Is: " + theList.Capacity);
-                        foreach (var item in theList)
-                        {
-                            Console.WriteLine(item);
-                        }
-                        //var capacity = theList.Capacity();
+                        ExamineListMethods.AddUser(theList, value);
                         break;
                     case '-':
-                        theList.RemoveAll(x => x.Contains(value));
-                        Console.WriteLine($"User {value} was deleted.\nCount is: " + theList.Count + "\nCapacity Is: " + theList.Capacity);
-                        foreach (var item in theList)
-                        {
-                            Console.WriteLine(item);
-                        }
-
-                        break;
-                    case '0':
-                        Environment.Exit(0);
+                        ExamineListMethods.RemoveUser(theList, value);
                         break;
                     default:
                         Console.WriteLine("Please use only + or - operator");
@@ -122,7 +117,6 @@ namespace SkalProj_Datastrukturer_Minne
             }
             //switch (nav) {...}
         }
-
         /// <summary>
         /// Examines the datastructure Queue
         /// </summary>
@@ -133,6 +127,31 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
+
+            Queue<string> theQueue = new Queue<string>();
+
+            while (true)
+            {
+                Console.WriteLine("Add to the queue with a + operator or use - operator to remove the first person in line. Press 0 to exit to main menu");
+                string input = Console.ReadLine();
+                if (input == "0") break;
+                char nav = input[0];
+                string value = input.Substring(1);
+
+                switch (nav)
+                {
+                    case '+':
+                        ExamineQueueMethods.EnqueueUser(theQueue, value);
+                        break;
+                    case '-':
+                        ExamineQueueMethods.DequeueUser(theQueue);
+                        break;
+                    default:
+                        Console.WriteLine("Please use only + or - operator");
+                        break;
+                }
+            }
+
         }
 
         /// <summary>
@@ -145,6 +164,27 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
+
+            while (true)
+            {
+                Console.WriteLine("Type in a name or text using + operator for it to be reversed. Press 0 to exit to main menu");
+                var input = Console.ReadLine();
+                //var checkInput = String.IsNullOrEmpty(input)
+                if (input == "0") break;
+                char nav = input[0];
+                string value = input.Substring(1);
+
+                switch (nav)
+                {
+                    case '+':
+                        ExamineStackMethods.ReverseText(value);
+                        break;
+                    default:
+                        Console.WriteLine("Please use only + operator");
+                        break;
+                }
+            }
+
         }
 
         static void CheckParanthesis()
@@ -154,6 +194,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
+
 
         }
 
